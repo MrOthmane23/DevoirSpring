@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+<title>Ajout d'un BUG</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	
+</head>
+
+
+
+<body>
+
+<div class="container" style="margin-top: 50px; ">
+<div class="card">
+	<div class="card-header">
+		<h1>Ajout d'un BUG</h1>
+	</div>
+ <div class="card-body">
+<form th:action="@{/client/addBug}" th:object="${bug}" method="post">
+	
+ <input readonly type="hidden" name="id" th:field="*{id}" />
+Nom: <input class="form-control"  type="text" name="nom" th:field="*{nom}" />
+Description: <input class="form-control" type="text" name="description" th:field="*{description}" />
+etat: <input class="form-control" type="text" name="etat" th:field="*{etat}" />
+urgence :  <select name="urgence" class="form-select" th:field="*{urgence}"> 
+				<option th:each="d : ${urgences}" th:value="${d.id}" th:text="${d.nom}"> </option> 
+			</select>
+logiciel :  <select name="logiciel" class="form-select" th:field="*{logiciel}"> 
+				<option th:each="d : ${logs}" th:value="${d.id}" th:text="${d.nom}"> </option> 
+			</select>
+	
+<button style="margin-top: 30px;" type="submit" class="btn btn-success">Enregistrer</button>
+</form>
+ </div>
+</div>
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+<title>Change status</title>
+</head>
+
+
+
+<body>
+<form th:action="@{/developer/changeStatus}" th:object="${ticket}" method="post">
+	
+ <input readonly type="text" name="id" th:field="*{id}"/>
+
+	
+<button type="submit">Enregistrer</button>
+</form>
+</body>
+
+
+
+</html>
